@@ -1,8 +1,8 @@
 // import server from './src/server'
 // src/server.ts
-import app from './src/app';
+import app from '../src/app';
 // import connectDB from '../config/database';
-import connectDB from './src/config/database'
+import connectDB from '../src/config/database'
 import dotenv from 'dotenv';
 
 dotenv.config();
