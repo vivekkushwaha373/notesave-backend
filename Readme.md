@@ -98,7 +98,7 @@ Before running this application, make sure you have:
 6. Add authorized redirect URIs: `http://localhost:3000`
 7. Copy Client ID and Client Secret to `.env`
 
-## Gmail Setup for Email
+## Gmail Setup for Emaill
 
 1. Enable 2-Factor Authentication on your Gmail account
 2. Generate an App Password:
