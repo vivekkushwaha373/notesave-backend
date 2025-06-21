@@ -3,12 +3,12 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import authRoutes from '../src/routes/auth';
-import notesRoutes from '../src/routes/notes';
+import authRoutes from './src/routes/auth';
+import notesRoutes from './src/routes/notes';
 
-import { globalErrorHandler, notFound } from '../src/middleware/errorHandler';
+import { globalErrorHandler, notFound } from './src/middleware/errorHandler';
 import cookieParser from 'cookie-parser';
-import connectDB from '../src/config/database'
+import connectDB from './src/config/database'
 
 // Load environment variables
 dotenv.config();
