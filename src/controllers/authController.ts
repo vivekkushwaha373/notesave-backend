@@ -6,6 +6,10 @@ import { generateToken, generateRefreshToken } from '../utils/jwt';
 import { emailService, generateOTP } from '../utils/email';
 import { CookieOptions } from 'express';
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -239,7 +243,7 @@ export const googleAuth = async (req: Request, res: Response):Promise<any> => {
                 code,
                 client_id: process.env.GOOGLE_CLIENT_ID,
                 client_secret: process.env.GOOGLE_CLIENT_SECRET,
-                redirect_uri: 'http://localhost:5173/auth/callback',
+                redirect_uri: `${process.env.FRONTEND_URL}/auth/callback`,
                 grant_type: 'authorization_code',
             },
             { headers: { 'Content-Type': 'application/json' } }
