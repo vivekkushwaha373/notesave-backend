@@ -29,17 +29,13 @@ const corsOptions = {
 
 // Middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Security headers
-app.use((req, res, next) => {
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('X-XSS-Protection', '1; mode=block');
-    next();
-});
+
 
 // Health check endpoint
 app.get('/health', (req, res) => {
