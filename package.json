@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
-  "engines": {
-    "node": "20.x"
-  },
+  
   "scripts": {
     "dev": "nodemon index.ts",
+    "start": "node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
