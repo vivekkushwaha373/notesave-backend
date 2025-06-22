@@ -194,18 +194,15 @@ export const loginUser = async (req: Request, res: Response): Promise<any> => {
         const token = generateToken(user);
         const refreshToken = generateRefreshToken(user);
 
-        const options:CookieOptions = {
+        
+
+        res.cookie('token', token, {
             sameSite: 'none',
             secure: true,
             httpOnly: true,
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 1 day
         }
-        
-        console.log('🍪 Cookie options used:', options);
-        console.log('🍪 Set-Cookie header will be:', `token=${token}; SameSite=none; Secure; HttpOnly; Expires=${options.expires?.toUTCString()}; Path=/`);
-
-
-        res.cookie('token', token, options);
+        );
 
 
        return res.status(200).json({
@@ -297,14 +294,14 @@ export const googleAuth = async (req: Request, res: Response):Promise<any> => {
         const tokenjwt = generateToken(user);
         const refreshToken = generateRefreshToken(user);
 
-        const options: CookieOptions = {
+       
+
+        res.cookie('token', tokenjwt, {
             sameSite: 'none',
             secure: true,
             httpOnly: true,
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
-        };
-
-        res.cookie('token', tokenjwt, options);
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 1 day
+        });
 
         return res.status(200).json({
             success: true,
