@@ -13,9 +13,7 @@
     "noEmitOnError": false,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
-    "types": [
-      "node"
-    ]
+    
   },
   "include": [
     "src/**/*"
