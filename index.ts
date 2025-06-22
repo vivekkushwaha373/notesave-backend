@@ -3,12 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import authRoutes from './routes/auth';
-import notesRoutes from './routes/notes';
-
-import { globalErrorHandler, notFound } from './middleware/errorHandler';
+import authRoutes from './src/routes/auth';
+import notesRoutes from './src/routes/notes';
 import cookieParser from 'cookie-parser';
-import connectDB from './config/database'
+import connectDB from './src/config/database'
 
 // Load environment variables
 dotenv.config();
@@ -37,7 +35,9 @@ app.use(cookieParser());
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-
+app.get('/', (req, res) => {
+    res.send('<h1>Hii I am Running<h1>');
+})
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -54,10 +54,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
 
 // 404 handler
-app.use(notFound);
 
-// Global error handler
-app.use(globalErrorHandler);
 
 
 
