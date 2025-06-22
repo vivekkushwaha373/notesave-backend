@@ -196,8 +196,8 @@ export const loginUser = async (req: Request, res: Response): Promise<any> => {
 
         const options:CookieOptions = {
             httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 1 day
-            sameSite: 'none',
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 1 day
+            sameSite: 'None' as any,
             secure: true
         }
 
@@ -295,8 +295,8 @@ export const googleAuth = async (req: Request, res: Response):Promise<any> => {
 
         const options: CookieOptions = {
             httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-            sameSite: 'none',
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+            sameSite: 'None' as any,
             secure: true
         };
 
@@ -359,7 +359,7 @@ export const logoutUser = async (req: Request, res: Response): Promise<any> => {
     
     res.clearCookie('token', {
         httpOnly: true,
-        sameSite: 'none',
+        sameSite: 'None' as any,
         secure: true,
     });
 
