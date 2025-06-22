@@ -30,9 +30,19 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 
+// Add this after app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    console.log('📥 Request to:', req.method, req.url);
+    console.log('🍪 All cookies received:', req.cookies);
+    console.log('📋 Raw cookie header:', req.headers.cookie);
+    console.log('🌐 Origin header:', req.headers.origin);
+    console.log('---');
+    next();
+});
 
 app.use(cookieParser());
 app.use(express.json());
+
 // app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.get('/', (req, res) => {

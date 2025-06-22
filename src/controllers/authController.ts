@@ -195,10 +195,10 @@ export const loginUser = async (req: Request, res: Response): Promise<any> => {
         const refreshToken = generateRefreshToken(user);
 
         const options:CookieOptions = {
+            sameSite: 'none',
+            secure: true,
             httpOnly: true,
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 1 day
-            sameSite: 'None' as any,
-            secure: true
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 1 day
         }
 
         res.cookie('token', token, options);
@@ -294,10 +294,10 @@ export const googleAuth = async (req: Request, res: Response):Promise<any> => {
         const refreshToken = generateRefreshToken(user);
 
         const options: CookieOptions = {
+            sameSite: 'none',
+            secure: true,
             httpOnly: true,
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-            sameSite: 'None' as any,
-            secure: true
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
         };
 
         res.cookie('token', tokenjwt, options);
@@ -359,7 +359,7 @@ export const logoutUser = async (req: Request, res: Response): Promise<any> => {
     
     res.clearCookie('token', {
         httpOnly: true,
-        sameSite: 'None' as any,
+        sameSite: 'none',
         secure: true,
     });
 
