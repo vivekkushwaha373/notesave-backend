@@ -7,6 +7,7 @@ import { emailService, generateOTP } from '../utils/email';
 import { CookieOptions } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import * as cookie from 'cookie';
 
 dotenv.config();
 
@@ -196,13 +197,15 @@ export const loginUser = async (req: Request, res: Response): Promise<any> => {
 
         
 
-        res.cookie('token', token, {
+        const cookieString = cookie.serialize('token', token, {
             sameSite: 'none',
             secure: true,
             httpOnly: true,
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 1 day
-        }
-        );
+            expires: new Date(Date.now() + 3* 24 * 60 * 60 * 1000),
+            path: '/'
+        });
+
+        res.setHeader('Set-Cookie', cookieString);
 
 
        return res.status(200).json({

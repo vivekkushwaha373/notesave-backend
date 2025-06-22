@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
-  
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
@@ -14,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-   
     "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",
+    "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -28,13 +27,14 @@
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
-    "@types/node": "^24.0.3",
     "@types/bcryptjs": "^3.0.0",
+    "@types/cookie": "^1.0.0",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/express-validator": "^3.0.2",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.3",
     "@types/nodemailer": "^6.4.17",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
