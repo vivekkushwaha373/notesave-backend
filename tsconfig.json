@@ -5,18 +5,20 @@
     "outDir": "dist",
     "rootDir": "src",
     "lib": [
-      "ES2020","DOM"
+      "ES2020"
     ],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmitOnError": false,
-    "strict": false
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "src/index.ts",
-    "src/**/*"
+    "src/**/*",
   ],
   "exclude": [
     "node_modules",
