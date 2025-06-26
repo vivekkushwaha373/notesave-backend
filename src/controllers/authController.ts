@@ -4,7 +4,6 @@ import { OAuth2Client } from 'google-auth-library';
 import User from '../models/User';
 import { generateToken, generateRefreshToken } from '../utils/jwt';
 import { emailService, generateOTP } from '../utils/email';
-import { CookieOptions } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import * as cookie from 'cookie';
@@ -31,14 +30,15 @@ export const registerUser = async (req: Request, res: Response):Promise<any> => 
             });
         }   
         
-        if (existingUser && !existingUser.password) {
+        if (existingUser && existingUser.isGoogleUser) {
             
             existingUser.password = password;
             await existingUser.save();
 
             return res.status(201).json({
                 success: true,
-                message: 'User registered successfully. Please check your email for verification code.',
+                otpRequired:false,
+                message: 'User registered successfully. You can can login now',
                 data: {
                     userId: existingUser._id,
                     email: existingUser.email,
@@ -71,6 +71,7 @@ export const registerUser = async (req: Request, res: Response):Promise<any> => 
 
         return res.status(201).json({
             success: true,
+            otpRequired: true,
             message: 'User registered successfully. Please check your email for verification code.',
             data: {
                 userId: user._id,
